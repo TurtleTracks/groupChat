@@ -1,0 +1,65 @@
+Server architecture and protocol
+
+The server spawn a new thread for each client connection. The client and server use the application header
+typedef struct
+{
+    uint8_t cmd;
+    uint8_t gid;
+    uint16_t uid;
+    uint32_t len;
+    char payload[];
+} mainhdr_t;
+
+Protocol:
+/** 
+ * Creating a user
+ * C->S    cmd=USR_CREATE, gid=0, uid=0, payload="username:password"
+ * S->C    cmd=USR_CREATE, gid=0, uid=0, payload= 0 on success and non-zero with error code on failure
+ */
+
+/** 
+ * User Login
+ * C->S    cmd=USR_LOGIN, gid=0, uid=0, payload="username:password"
+ * S->C    cmd=USR_LOGIN, gid=0, uid=client_uid or 0 on failure, payload= 0 on success and non-zero with error code on failure
+ */
+
+/** 
+ * Send Chat
+ * C->S    cmd=SEND_CHAT, gid=gid_to_send, uid=client_uid, payload="string of message"
+ * S->C    cmd=SEND_CHAT, gid=gid_to_send, uid=sender_uid, payload="sender_name:" + "string of message"
+ */
+
+/**
+ * Upload file
+ * C->S    cmd=SEND_FILE, gid=gid_to_send, uid=client_uid, payload=file_data
+ */
+
+/**
+ * Download file
+ * C->S    cmd=DOWNLOAD, gid=gid_to_send, uid=client_uid, payload=file_name
+ * S->C    cmd=DOWNLOAD, gid=gid_to_send, uid=file_idx, payload=file_data
+ */
+
+
+/** 
+ * Invite user
+ * C->S    cmd=INVITE, gid=gid_to_invite, uid=sender_uid, payload="recipient's name"
+ * S->C (To recipient not sender)    cmd=INVITE, gid=gid_to_invite, uid=sender_uid, payload=""
+ */
+
+/** 
+ * Invite Response 
+ * C->S    cmd=INVITE_RESP, gid=gid_to_accept, uid=acceptor_uid, payload="accept" or "decline"
+ */
+
+/** 
+ * Get the current active list
+ * C->S    cmd=ACTIVE_LIST, gid=0, uid=sender_uid, payload=""
+ * S->C    cmd=ACTIVE_LIST, gid=0, uid=sender_uid, payload="usrname1,usrname2,username3..." (client just display the entire string to stdout)
+ */
+
+/**
+ * Create new group
+ * C->S    cmd=CREATE_GROUP, gid=0, uid=sender_uid, payload=""
+ * S->S    cmd=CREATE_GROUP, gid=new_gid, uid=sender_uid, payload=0 or success and error code on faiure
+ */

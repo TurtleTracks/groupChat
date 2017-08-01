@@ -1,0 +1,11 @@
+*.swp
+client
+server
+gui
+*.o
+GPATH
+GRTAGS
+GTAGS
+a.out
+group
+active_name.txt
