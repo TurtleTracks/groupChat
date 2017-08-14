@@ -1,6 +1,8 @@
 # chat_server
-Text-based Chat Server
-
+##Text-based Chat Server
+![terminal](http://u.cubeupload.com/viewer189/terminal.png "terminal")
+![invite](http://u.cubeupload.com/viewer189/invitebryan.png "sending invitation")
+![convo](http://u.cubeupload.com/viewer189/chatbox.png "chat")
 Compiling chat_server:
 
 chat_server needs xlib, xcb, and pthreads to compile. 
