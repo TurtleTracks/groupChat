@@ -6,27 +6,27 @@ Compiling chat_server:
 chat_server needs xlib, xcb, and pthreads to compile. 
 packages for each can be installed (in Ubuntu) with: 
 
-$sudo apt-get install libx11-dev libxcb1-dev libpthread-stubs0-dev
+`$sudo apt-get install libx11-dev libxcb1-dev libpthread-stubs0-dev`
 
 makefile also needs pkg-config to include those libraries, install with:
-$sudo apt-get install pkg-config
+`$sudo apt-get install pkg-config`
 
 Running makefile: 
-option 1: $make 
+option 1: `$make `
 produces necessary client and server executables, ignore compilation failures 
 for other targets. 
 
 option 2:
-$make client
-$make server
+`$make client`
+`$make server`
 
 make each executable individually
 
 Running server:
-- ./server [port-number]
+` ./server [port-number]`
 
 Running client:
-- ./client [server-ip] [port-number]
+` ./client [server-ip] [port-number]`
 
 How client works:
 launches terminal window where you are prompted to 
