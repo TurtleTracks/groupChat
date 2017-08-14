@@ -1,5 +1,5 @@
-# chat_server
-##Text-based Chat Server
+# groupChat
+### Text-based chat client and server
 ![terminal](http://u.cubeupload.com/viewer189/terminal.png "terminal")
 ![invite](http://u.cubeupload.com/viewer189/invitebryan.png "sending invitation")
 ![convo](http://u.cubeupload.com/viewer189/chatbox.png "chat")
